@@ -61,7 +61,7 @@ class curiosity_potd_widget extends WP_Widget
                     //Set yesterday date
                     let today = new Date();
                     let yesterday = new Date(today);
-                    yesterday.setDate(today.getDate() - 1);
+                    yesterday.setDate(today.getDate() - 2);
                     let dd = yesterday.getDate();
                     let mm = yesterday.getMonth()+1;
                     let yyyy = yesterday.getFullYear();
