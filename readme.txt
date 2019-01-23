@@ -1,9 +1,9 @@
 === Curiosity POTD ===
 Contributors: Andrea Benzi
 Tags: widget, mars, nasa, curiosity, rover, astronomy, photo
-Requires at least: 4.8
-Tested up to: 5.0
-Stable tag: 4.8
+Requires at least: 4.9.8
+Tested up to: 5.0.3
+Stable tag: 4.9.8
 
 NASA Mars Curiosity Rover picture of the day widget.
 
@@ -12,8 +12,9 @@ NASA Mars Curiosity Rover picture of the day widget.
 
 This plugin adds a widget to display the latest NASA Mars Curiosity Rover Photo.
 
-Get an api key from NASA (or use DEMO_KEY default value):
-https://api.nasa.gov/index.html#apply-for-an-api-key
+Widget Option:
+- Title
+- NASA api key (https://api.nasa.gov/index.html)
 
 
 == Installation ==

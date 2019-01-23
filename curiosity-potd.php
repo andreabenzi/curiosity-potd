@@ -6,7 +6,7 @@ Description: NASA Curiosity rover picture of the day widget.
 Version: 1.0
 License: GPL 2.0
 Author: Andrea Benzi
-Author URI: http://www.andreabenzi.it
+Author URI: https://www.andreabenzi.it
 */
 
 class curiosity_potd_widget extends WP_Widget
@@ -61,7 +61,7 @@ class curiosity_potd_widget extends WP_Widget
                     //Set yesterday date
                     let today = new Date();
                     let yesterday = new Date(today);
-                    yesterday.setDate(today.getDate() - 2);
+                    yesterday.setDate(today.getDate() - 1);
                     let dd = yesterday.getDate();
                     let mm = yesterday.getMonth()+1;
                     let yyyy = yesterday.getFullYear();
