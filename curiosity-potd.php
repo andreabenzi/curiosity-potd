@@ -30,7 +30,7 @@ class curiosity_potd_widget extends WP_Widget
  
         <p>
             <label for="<?php echo $this->get_field_id( 'title' ); ?>">
-                Titolo:
+                Title:
             </label>
             <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
         </p>
