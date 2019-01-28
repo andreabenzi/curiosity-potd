@@ -14,14 +14,14 @@ class curiosity_potd_widget extends WP_Widget
     public function __construct(){
         $widget_options = array( 
             'classname' => 'curiosity_potd',
-            'description' => 'NASA Curiosity rover picture of the day widget.',
+            'description' => 'NASA Curiosity rover photo of the day widget.',
         );
         parent::__construct( 'curiosity_potd', 'Curiosity POTD', $widget_options );
     }
 
     public function form( $instance ){
         $defaults = array(
-            'title' => 'Curiosity Today',
+            'title' => 'Curiosity Latest Photo',
             'api_key' => 'DEMO_KEY'
         );
  
