@@ -1,8 +1,8 @@
 # curiosity-potd
 
-WordPress Plugin tested 4.9.8 / 5.0.3 version.
+WordPress Plugin tested 3.0 / 5.0.3 version.
 
-This is a simple plugin that create a widget to show NASA Curiosity rover latest photo.
+This plugin create a widget to show NASA Curiosity rover latest photo.
 
 Widget Option:
 - Title
