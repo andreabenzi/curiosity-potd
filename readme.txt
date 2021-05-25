@@ -2,8 +2,8 @@
 Contributors: andreabenzi
 Tags: astronomy, nasa, mars, photo, widget
 Requires at least: 3.0
-Tested up to: 5.0.3
-Stable tag: 1.0.0
+Tested up to: 5.7.2
+Stable tag: 1.1.0
 Requires PHP: 4.4.45
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ NASA Mars Curiosity Rover latest image widget.
 
 This plugin adds a widget to display the NASA Mars Curiosity Rover photo of the day.
 A good solution if you are interested in astronomy news and want to put a space picture on your website.
-It provide a description with the day (also with martian version) and the rover camera displayed.
+It provide a description with the day, also with the martian version (SOL), and the rover camera random displayed.
 Very easy to configure and compatible with a lot of WordPress versions.
 
 = Widget Option =
@@ -37,6 +37,7 @@ To infinity and beyond!
 
 1. Upload curiosity-potd directory to the /wp-content/plugins/ directory
 2. Activate the plugin through the Plugins menu in WordPress
+3. Go to the Widget admin section and add Curiosity POTD to your sidebar
 3. Add custom NASA API key in widget options or use the DEMO_KEY default value
 
 

@@ -3,7 +3,7 @@
 Plugin Name: Curiosity POTD
 Plugin Script: curiosity-potd.php
 Description: NASA Curiosity rover picture of the day widget.
-Version: 1.0
+Version: 1.1.0
 License: GPL 2.0
 Author: Andrea Benzi
 Author URI: https://www.andreabenzi.it
@@ -61,7 +61,7 @@ class curiosity_potd_widget extends WP_Widget
                     //Set yesterday date
                     let today = new Date();
                     let yesterday = new Date(today);
-                    yesterday.setDate(today.getDate() - 1);
+                    yesterday.setDate(today.getDate() - 2);
                     let dd = yesterday.getDate();
                     let mm = yesterday.getMonth()+1;
                     let yyyy = yesterday.getFullYear();
@@ -81,18 +81,19 @@ class curiosity_potd_widget extends WP_Widget
                         if(xhr_curiosity.readyState == 4 && xhr_curiosity.status === 200){
                             
                             let obj_curiosity = JSON.parse(xhr_curiosity.responseText);
-                            
+                            console.log(obj_curiosity.photos.length);
                             if (obj_curiosity.photos.length != 0){
                                 
                                 //Create img element
                                 var img_curiosity = document.createElement("img");
-                                img_curiosity.src = obj_curiosity.photos[0].img_src;
+                                var random_camera = Math.floor(Math.random() * obj_curiosity.photos.length);
+                                img_curiosity.src = obj_curiosity.photos[random_camera].img_src;
                                 img_curiosity.style.width = '100%';
                                 document.querySelector('#curiosity-potd').appendChild(img_curiosity);
 
                                 //Create sol text
                                 var sol = document.createElement("I");
-                                var sol_text = document.createTextNode("Sol: "+obj_curiosity.photos[0].sol+" ("+dd+"/"+mm+"/"+yyyy+")");
+                                var sol_text = document.createTextNode("Sol: "+obj_curiosity.photos[random_camera].sol+" ("+dd+"/"+mm+"/"+yyyy+")");
                                 sol.appendChild(sol_text);                               
                                 document.querySelector('#curiosity-potd').appendChild(sol);
 
@@ -101,7 +102,7 @@ class curiosity_potd_widget extends WP_Widget
                                 
                                 //Create camera name text
                                 var sol = document.createElement("SMALL");
-                                var sol_text = document.createTextNode(obj_curiosity.photos[0].camera.full_name);
+                                var sol_text = document.createTextNode(obj_curiosity.photos[random_camera].camera.full_name);
                                 sol.appendChild(sol_text);                               
                                 document.querySelector('#curiosity-potd').appendChild(sol);
 
