@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Curiosity POTD
+Plugin Name: Curiosity POTD widget / SOL block
 Plugin Script: curiosity-potd.php
-Description: NASA Curiosity rover picture of the day widget.
-Version: 1.1.0
+Description: NASA Curiosity rover picture of the day widget & current sol block
+Version: 2.0.0
 License: GPL 2.0
 Author: Andrea Benzi
-Author URI: https://www.andreabenzi.it
+Author URI: https://linktr.ee/andreabenzi
 */
 
 class curiosity_potd_widget extends WP_Widget
@@ -143,10 +143,22 @@ class curiosity_potd_widget extends WP_Widget
  
 }
 
+/* widget registration */
 function curiosity_potd_register_widgets()
 {
     register_widget( 'curiosity_potd_widget' );
 }
 
 add_action( 'widgets_init', 'curiosity_potd_register_widgets' );
+
+/* block registration */
+function loadSolBlock() {
+  wp_enqueue_script(
+    'cpotd-block',
+    plugin_dir_url(__FILE__) . 'cpotd-block.js',
+    array('wp-blocks','wp-editor'),
+    true
+  );
+} 
+add_action('enqueue_block_editor_assets', 'loadSolBlock');
 ?>
