@@ -3,7 +3,7 @@
 Plugin Name: Curiosity POTD widget / SOL block
 Plugin Script: curiosity-potd.php
 Description: NASA Curiosity rover picture of the day widget & current sol block
-Version: 2.0.0
+Version: 2.0
 License: GPL 2.0
 Author: Andrea Benzi
 Author URI: https://linktr.ee/andreabenzi

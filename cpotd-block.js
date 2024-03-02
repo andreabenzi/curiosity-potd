@@ -44,7 +44,7 @@ var curiosity_lambda = 360 - 137.4;
 var curiosity_sol = Math.floor(msd - curiosity_lambda / 360) - 49268;
 
 wp.blocks.registerBlockType('brad/border-box', {
-	title: 'Curiosity SOL Block',
+	title: 'Curiosity SOL',
   	icon: 'marker',
   	category: 'common',
   	attributes: {

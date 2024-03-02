@@ -1,10 +1,10 @@
 === Curiosity POTD ===
 Contributors: andreabenzi
-Tags: astronomy, nasa, mars, photo, widget
-Requires at least: 3.0
+Tags: astronomy, apod, planet, widget, block
+Requires at least: 5.2
 Tested up to: 6.4.3
-Stable tag: 1.1.0
-Requires PHP: 4.4.45
+Stable tag: 2.0
+Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,7 @@ The default NASA API key (DEMO_KEY) works fine but you can get one at:
 [https://api.nasa.gov/index.html](https://api.nasa.gov/index.html)
 
 = Version 2.0 =
-This plugin add a block for Gutenberg that display current SOL of Curiosity into a paragraph tag.
+This plugin add a block for Gutenberg that display current sol (martian day version) of Curiosity into a paragraph tag.
 
 = Slogan =
 
@@ -43,7 +43,7 @@ To infinity and beyond!
 4. Add custom NASA API key in widget options or use the DEMO_KEY default value
 
 = Version 2.0 =
-Select Curiosity SOL Block and that's it.
+Select Curiosity SOL block and that's it.
 
 == Screenshots ==
 
