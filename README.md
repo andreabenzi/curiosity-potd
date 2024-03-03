@@ -8,4 +8,4 @@ Widget Option:
 - Title
 - Nasa Api Key (https://api.nasa.gov/index.html)
 
-This plugin add a block to display current Curiosity sol.
+This plugin add a static block to display current Curiosity sol.
