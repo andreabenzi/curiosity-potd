@@ -8,11 +8,11 @@ Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-NASA Mars Curiosity rover latest image widget & current sol block.
+NASA Mars Curiosity rover latest image widget & current sol static block.
 
 == Description ==
 
-This plugin adds a widget to display the NASA Mars Curiosity rover photos and a block to display current sol. 
+This plugin adds a widget to display the NASA Mars Curiosity rover photos and a static block to display current sol. 
 A good solution if you are interested in astronomy news and want to put a space picture on your website. 
 It provide a description with the day, also with the martian version (SOL), and the rover camera random displayed. 
 Very easy to configure and compatible with a lot of WordPress versions.
@@ -28,7 +28,8 @@ The default NASA API key (DEMO_KEY) works fine but you can get one at:
 [https://api.nasa.gov/index.html](https://api.nasa.gov/index.html)
 
 = Version 2.0 =
-This plugin add a block for Gutenberg that display current sol (martian day version) of Curiosity into a paragraph tag.
+This plugin add a static block for Gutenberg that display current sol (martian day version) of Curiosity into a paragraph tag.
+The date don't change after the block is added. It's just a print to put in your article the Curiosity sol at that time.
 
 = Slogan =
 
@@ -43,10 +44,10 @@ To infinity and beyond!
 4. Add custom NASA API key in widget options or use the DEMO_KEY default value
 
 = Version 2.0 =
-Select Curiosity SOL block and that's it.
+Select Curiosity SOL static block and that's it.
 
 == Screenshots ==
 
 1. Widget option panel
 2. Curiosity Rover photo example
-3. Curiosity SOL block
+3. Curiosity SOL static block
