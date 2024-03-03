@@ -30,6 +30,7 @@ The default NASA API key (DEMO_KEY) works fine but you can get one at:
 = Version 2.0 =
 This plugin add a static block for Gutenberg that display current sol (martian day version) of Curiosity into a paragraph tag.
 The date don't change after the block is added. It's just a print to put in your article the Curiosity sol at that time.
+The plugin remove the block editor for widget.
 
 = Slogan =
 
