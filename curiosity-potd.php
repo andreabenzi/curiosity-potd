@@ -3,7 +3,7 @@
 Plugin Name: Curiosity POTD widget / SOL block
 Plugin Script: curiosity-potd.php
 Description: NASA Curiosity rover picture of the day widget & current sol static block
-Version: 2.0
+Version: 2.1
 License: GPL 2.0
 Author: Andrea Benzi
 Author URI: https://linktr.ee/andreabenzi
@@ -58,70 +58,72 @@ class curiosity_potd_widget extends WP_Widget
             <script>
                 window.onload = function (){
                     
-                    //Set yesterday date
-                    let today = new Date();
-                    let yesterday = new Date(today);
-                    yesterday.setDate(today.getDate() - 2);
-                    let dd = yesterday.getDate();
-                    let mm = yesterday.getMonth()+1;
-                    let yyyy = yesterday.getFullYear();
-                    if(dd<10){
-                        dd='0'+dd
-                    } 
-                    if(mm<10){
-                        mm='0'+mm
-                    } 
+                    let xhr_manifest = new XMLHttpRequest();
+                    xhr_manifest.open('GET','https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity?&api_key=<?php echo $instance['api_key']; ?>');
+                    xhr_manifest.send();
+                    xhr_manifest.onreadystatechange = function(){
+                    	
+                    	let obj_manifest = JSON.parse(xhr_manifest.responseText);
+                        let sol = obj_manifest.photo_manifest.max_sol;
+                        
+                        let xhr_curiosity = new XMLHttpRequest();
+	                    xhr_curiosity.open('GET','https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol='+sol+'&api_key=<?php echo $instance['api_key']; ?>');
+	                    xhr_curiosity.send();
+	                    
+	                    xhr_curiosity.onreadystatechange = function(){
+	                        if(xhr_curiosity.readyState == 4 && xhr_curiosity.status === 200){
+	                            
+	                            let obj_curiosity = JSON.parse(xhr_curiosity.responseText);
+	                            
+	                            if (obj_curiosity.photos.length != 0){
+	                                
+	                                //Create img element
+	                                var img_curiosity = document.createElement("img");
+	                                var random_camera = Math.floor(Math.random() * obj_curiosity.photos.length);
+	                                img_curiosity.src = obj_curiosity.photos[random_camera].img_src;
+	                                img_curiosity.style.width = '100%';
+	                                document.querySelector('#curiosity-potd').appendChild(img_curiosity);
 
-                    //Call NASA Curiosity API
-                    let xhr_curiosity = new XMLHttpRequest();
-                    xhr_curiosity.open('GET','https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date='+yyyy+'-'+mm+'-'+dd+'&api_key=<?php echo $instance['api_key']; ?>');
-                    xhr_curiosity.send();
-                    
-                    xhr_curiosity.onreadystatechange = function(){
-                        if(xhr_curiosity.readyState == 4 && xhr_curiosity.status === 200){
-                            
-                            let obj_curiosity = JSON.parse(xhr_curiosity.responseText);
-                            console.log(obj_curiosity.photos.length);
-                            if (obj_curiosity.photos.length != 0){
-                                
-                                //Create img element
-                                var img_curiosity = document.createElement("img");
-                                var random_camera = Math.floor(Math.random() * obj_curiosity.photos.length);
-                                img_curiosity.src = obj_curiosity.photos[random_camera].img_src;
-                                img_curiosity.style.width = '100%';
-                                document.querySelector('#curiosity-potd').appendChild(img_curiosity);
+	                                //Create sol text
+	                                var sol = document.createElement("I");
+	                                var sol_text = document.createTextNode("Sol: "+obj_curiosity.photos[random_camera].sol);
+	                                sol.appendChild(sol_text);                               
+	                                document.querySelector('#curiosity-potd').appendChild(sol);
 
-                                //Create sol text
-                                var sol = document.createElement("I");
-                                var sol_text = document.createTextNode("Sol: "+obj_curiosity.photos[random_camera].sol+" ("+dd+"/"+mm+"/"+yyyy+")");
-                                sol.appendChild(sol_text);                               
-                                document.querySelector('#curiosity-potd').appendChild(sol);
+	                                var br = document.createElement("BR");
+	                                document.querySelector('#curiosity-potd').appendChild(br);
+	                                
+	                                //Create camera name text
+	                                var sol = document.createElement("SMALL");
+	                                var sol_text = document.createTextNode(obj_curiosity.photos[random_camera].camera.full_name);
+	                                sol.appendChild(sol_text);                               
+	                                document.querySelector('#curiosity-potd').appendChild(sol);
 
-                                var br = document.createElement("BR");
-                                document.querySelector('#curiosity-potd').appendChild(br);
-                                
-                                //Create camera name text
-                                var sol = document.createElement("SMALL");
-                                var sol_text = document.createTextNode(obj_curiosity.photos[random_camera].camera.full_name);
-                                sol.appendChild(sol_text);                               
-                                document.querySelector('#curiosity-potd').appendChild(sol);
+	                            }else{
+	                                var error = document.createElement("SMALL");
+	                                var error_text = document.createTextNode('Sorry. No picture today.');
+	                                error.appendChild(error_text);           
+	                                document.querySelector('#curiosity-potd').appendChild(error);
+	                            }
 
-                            }else{
-                                var error = document.createElement("SMALL");
-                                var error_text = document.createTextNode('Sorry. No picture today.');
-                                error.appendChild(error_text);           
-                                document.querySelector('#curiosity-potd').appendChild(error);
-                            }
-
-                        }
+	                        }
+	                    }
+	                    
+	                    xhr_curiosity.error = () => {
+	                        var error = document.createElement("SMALL");
+	                        var error_text = document.createTextNode('Sorry. Error contacting server.');
+	                        error.appendChild(error_text);           
+	                        document.querySelector('#curiosity-potd').appendChild(error);
+	                    }
                     }
-                    
-                    xhr_curiosity.error = () => {
-                        var error = document.createElement("SMALL");
-                        var error_text = document.createTextNode('Sorry. Error contacting server.');
-                        error.appendChild(error_text);           
-                        document.querySelector('#curiosity-potd').appendChild(error);
+
+                    xhr_manifest.error = () => {
+                    	var error = document.createElement("SMALL");
+	                    var error_text = document.createTextNode('Sorry. Error contacting server.');
+	                    error.appendChild(error_text);           
+	                    document.querySelector('#curiosity-potd').appendChild(error);
                     }
+
                 }
             </script>    
             <div id="curiosity-potd"></div>

@@ -42,6 +42,7 @@ var mtc = (24 * msd) % 24;
 
 var curiosity_lambda = 360 - 137.4;
 var curiosity_sol = Math.floor(msd - curiosity_lambda / 360) - 49268;
+var curiosity_string = "This article was written during sol: "+curiosity_sol;
 
 wp.blocks.registerBlockType('brad/border-box', {
 	title: 'Curiosity SOL',
@@ -56,11 +57,11 @@ wp.blocks.registerBlockType('brad/border-box', {
     	return React.createElement(
       		"div",
       		null,
-      		React.createElement("p",null,curiosity_sol)
+      		React.createElement("p",{ style: { border: "1px solid #000", padding: "5px" } },curiosity_string)
     	);
   	},
 
   	save: function(props) {
-		return wp.element.createElement("p",null,curiosity_sol);
+		return wp.element.createElement("p",{ style: { border: "1px solid #000", padding: "5px" } },curiosity_string);
     }
 });
